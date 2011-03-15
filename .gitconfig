@@ -1,0 +1,12 @@
+[user]
+	name = Nathan Bowser
+	email = nate@nathanbowser.com
+[github]
+	user = nathanbowser
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+[core]
+	editor = emacs
+	excludesfile = ~/.gitignore

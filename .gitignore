@@ -1,0 +1,8 @@
+.DS_Store
+.MacOSX/*
+.emacs-project*
+.svn
+.*.swp
+*~
+*#
+.#*

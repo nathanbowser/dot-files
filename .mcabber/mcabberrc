@@ -1,0 +1,19 @@
+set username = nbowser@gmail.com
+set server = talk.google.com
+set ssl = 1
+set ssl_verify = 0
+set ignore_self_presence = 1
+
+set aspell_enable = 1
+set aspell_lang = en_US
+set aspell_encoding = UTF-8
+set roster_display_filter = ofdna
+
+set url_regex = "(((https?|ftps?|nntp)://)|www[.][-a-z0-9.]+|(mailto:|news:))(%[0-9A-F]{2}|[-_.!~*';/?:@&=+$,#[:alnum:]])+"
+
+set events_command = /usr/local/bin/mcnotify
+
+bind M110 = roster down
+bind M112 = roster up
+bind M60 = roster top
+bind M62 = roster bottom
