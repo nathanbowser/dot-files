@@ -53,41 +53,41 @@
 (transient-mark-mode)
 
 ;; == Jabber
-(add-to-list 'load-path "~/.emacs.d/jabber/")
-(require 'jabber-autoloads)
-(setq jabber-account-list
-      '(("nbowser@gmail.com"
-	 (:password . nil)
-	 (:network-server . "talk.google.com")
-	 (:port . 443)
-	 (:connection-type . ssl))))
+;; (add-to-list 'load-path "~/.emacs.d/jabber/")
+;; (require 'jabber-autoloads)
+;; (setq jabber-account-list
+;;       '(("nbowser@gmail.com"
+;; 	 (:password . nil)
+;; 	 (:network-server . "talk.google.com")
+;; 	 (:port . 443)
+;; 	 (:connection-type . ssl))))
 
-(defvar growl-program "/usr/local/bin/growlnotify")
+;; (defvar growl-program "/usr/local/bin/growlnotify")
 
-(defun growl (title message &optional id)
-  (if (eq id nil)
-      (start-process "growl" " growl"
-                     growl-program title "-w")
-    (start-process "growl" " growl"
-                   growl-program title "-w" "-d" id))
-  (process-send-string " growl" message)
-  (process-send-string " growl" "\n")
-  (process-send-eof " growl"))
+;; (defun growl (title message &optional id)
+;;   (if (eq id nil)
+;;       (start-process "growl" " growl"
+;;                      growl-program title "-w")
+;;     (start-process "growl" " growl"
+;;                    growl-program title "-w" "-d" id))
+;;   (process-send-string " growl" message)
+;;   (process-send-string " growl" "\n")
+;;   (process-send-eof " growl"))
 
-;; == Make jabber.el notify through growl when I get a new message
-(setq jabber-message-alert-same-buffer nil)
-(defun pg-jabber-growl-notify (from buf text proposed-alert)
-  "(jabber.el hook) Notify of new Jabber chat messages via Growl"
-  (when (or jabber-message-alert-same-buffer
-            (not (memq (selected-window) (get-buffer-window-list buf))))
-    (if (jabber-muc-sender-p from)
-        (growl (format "(PM) %s" 
-                      (jabber-jid-displayname (jabber-jid-user from))) 
-              ;;  (format "%s: %s" (jabber-jid-resource from) text) 
-	       "Message received."
-               (format "jabber-from-%s" (jabber-jid-resource from)))
-      (growl (format "%s" (jabber-jid-displayname from)) 
-             ;;text 
-	     "Message received."
-	     "jabber-from-unknown"))))
-(add-hook 'jabber-alert-message-hooks 'pg-jabber-growl-notify)
+;; ;; == Make jabber.el notify through growl when I get a new message
+;; (setq jabber-message-alert-same-buffer nil)
+;; (defun pg-jabber-growl-notify (from buf text proposed-alert)
+;;   "(jabber.el hook) Notify of new Jabber chat messages via Growl"
+;;   (when (or jabber-message-alert-same-buffer
+;;             (not (memq (selected-window) (get-buffer-window-list buf))))
+;;     (if (jabber-muc-sender-p from)
+;;         (growl (format "(PM) %s" 
+;;                       (jabber-jid-displayname (jabber-jid-user from))) 
+;;               ;;  (format "%s: %s" (jabber-jid-resource from) text) 
+;; 	       "Message received."
+;;                (format "jabber-from-%s" (jabber-jid-resource from)))
+;;       (growl (format "%s" (jabber-jid-displayname from)) 
+;;              ;;text 
+;; 	     "Message received."
+;; 	     "jabber-from-unknown"))))
+;; (add-hook 'jabber-alert-message-hooks 'pg-jabber-growl-notify)
