@@ -1,0 +1,8 @@
+#!/bin/bash
+if [ "$1" = "UNREAD" ]
+then
+  if [ "$2" != "0" ]
+  then
+    echo "Unread messages." | terminal-notifier -sound default
+  fi
+fi
